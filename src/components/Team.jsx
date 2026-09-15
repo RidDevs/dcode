@@ -6,32 +6,58 @@ import sampritiImg from '../assets/team/sampriti.jpeg';
 import nitulImg from '../assets/team/nitul.jpeg';
 import sameerImg from '../assets/team/sameer.jpeg';
 
-const TeamCard = ({ member }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="glass-panel rounded-xl p-6 group hover:-translate-y-1 transition-transform duration-300 border border-outline-variant hover:border-primary/50 flex flex-col items-center text-center"
-  >
-    <div className="relative w-40 h-40 rounded-[2rem] overflow-hidden mb-6 border-2 border-primary/30 group-hover:border-primary transition-colors">
-      <img src={member.img} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-    </div>
-    <h4 className="font-headline-md text-xl font-bold text-on-surface group-hover:text-primary transition-colors">{member.name}</h4>
-    <p className="font-code-display text-sm text-primary mt-1 mb-4">{member.role}</p>
+const TeamCard = ({ member }) => {
+  const hasInsta = member.socials?.insta && member.socials.insta !== '#';
+  const hasLinkedin = member.socials?.linkedin && member.socials.linkedin !== '#';
+  const hasEmail = member.socials?.email && member.socials.email !== '#';
 
-    <div className="flex gap-4 mt-auto pt-4 border-t border-outline-variant w-full justify-center">
-      <a href={member.socials?.insta || '#'} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-pink-500 transition-colors" title="Instagram">
-        <i className="fa-brands fa-instagram text-xl"></i>
-      </a>
-      <a href={member.socials?.linkedin || '#'} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-blue-500 transition-colors" title="LinkedIn">
-        <i className="fa-brands fa-linkedin text-xl"></i>
-      </a>
-      <a href={member.socials?.email ? `mailto:${member.socials.email}` : '#'} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-primary transition-colors" title="Email">
-        <span className="material-symbols-outlined text-xl">mail</span>
-      </a>
-    </div>
-  </motion.div>
-);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="glass-panel rounded-xl p-6 group hover:-translate-y-1 transition-transform duration-300 border border-outline-variant hover:border-primary/50 flex flex-col items-center text-center"
+    >
+      <div className="relative w-40 h-40 rounded-[2rem] overflow-hidden mb-6 border-2 border-primary/30 group-hover:border-primary transition-colors">
+        <img src={member.img} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      </div>
+      <h4 className="font-headline-md text-xl font-bold text-on-surface group-hover:text-primary transition-colors">{member.name}</h4>
+      <p className="font-code-display text-sm text-primary mt-1 mb-4">{member.role}</p>
+
+      <div className="flex gap-4 mt-auto pt-4 border-t border-outline-variant w-full justify-center">
+        {hasInsta ? (
+          <a href={member.socials.insta} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-pink-500 transition-colors" title="Instagram">
+            <i className="fa-brands fa-instagram text-xl"></i>
+          </a>
+        ) : (
+          <span className="text-on-surface-variant/30 cursor-default" title="Instagram not available">
+            <i className="fa-brands fa-instagram text-xl"></i>
+          </span>
+        )}
+
+        {hasLinkedin ? (
+          <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-blue-500 transition-colors" title="LinkedIn">
+            <i className="fa-brands fa-linkedin text-xl"></i>
+          </a>
+        ) : (
+          <span className="text-on-surface-variant/30 cursor-default" title="LinkedIn not available">
+            <i className="fa-brands fa-linkedin text-xl"></i>
+          </span>
+        )}
+
+        {hasEmail ? (
+          <a href={`mailto:${member.socials.email}`} className="text-on-surface-variant hover:text-primary transition-colors" title="Email">
+            <span className="material-symbols-outlined text-xl">mail</span>
+          </a>
+        ) : (
+          <span className="text-on-surface-variant/30 cursor-default" title="Email not available">
+            <span className="material-symbols-outlined text-xl">mail</span>
+          </span>
+        )}
+      </div>
+    </motion.div>
+  );
+};
 
 const Team = () => {
   const coreTeam = [
@@ -77,3 +103,4 @@ const Team = () => {
 };
 
 export default Team;
+

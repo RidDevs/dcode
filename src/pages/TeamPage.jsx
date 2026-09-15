@@ -34,32 +34,78 @@ import suhaniImg from '../assets/team/suhani.jpg';
 import violeenaImg from '../assets/team/violeena.jpg';
 import nayanaImg from '../assets/team/nayana.png';
 
-const TeamCard = ({ member }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="glass-panel rounded-xl p-6 group hover:-translate-y-1 transition-transform duration-300 border border-outline-variant hover:border-primary/50 flex flex-col items-center text-center"
-  >
-    <div className="relative w-40 h-40 rounded-[2rem] overflow-hidden mb-6 border-2 border-primary/30 group-hover:border-primary transition-colors">
-      <img src={member.img} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-    </div>
-    <h4 className="font-headline-md text-xl font-bold text-on-surface group-hover:text-primary transition-colors">{member.name}</h4>
-    <p className="font-code-display text-sm text-primary mt-1 mb-4">{member.role}</p>
+// 2026-27 members
+import brishavImg from '../assets/team/brishav.jpg';
+import bibekImg from '../assets/team/bibek.jpg';
+import kundalkalyanImg from '../assets/team/kundalkalyan.jpg';
+import shakhyarImg from '../assets/team/shakhyar.jpg';
+import souradeepImg from '../assets/team/souradeep.jpg';
+import bornaliImg from '../assets/team/bornali.jpg';
+import priyaImg from '../assets/team/priya.jpg';
+import rittamImg from '../assets/team/rittam.jpg';
+import gyanamImg from '../assets/team/gyanam.jpg';
+import priyangshuImg from '../assets/team/priyangshu.jpg';
+import anweshaImg from '../assets/team/anwesha.jpg';
+import dibyaniImg from '../assets/team/dibyani.jpg';
+import nidarshanaImg from '../assets/team/nidarshana.jpg';
 
-    <div className="flex gap-4 mt-auto pt-4 border-t border-outline-variant w-full justify-center">
-      <a href={member.socials?.insta || '#'} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-pink-500 transition-colors" title="Instagram">
-        <i className="fa-brands fa-instagram text-xl"></i>
-      </a>
-      <a href={member.socials?.linkedin || '#'} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-blue-500 transition-colors" title="LinkedIn">
-        <i className="fa-brands fa-linkedin text-xl"></i>
-      </a>
-      <a href={member.socials?.email ? `mailto:${member.socials.email}` : '#'} className="text-on-surface-variant hover:text-primary transition-colors" title="Email">
-        <span className="material-symbols-outlined text-xl">mail</span>
-      </a>
-    </div>
-  </motion.div>
-);
+const TeamCard = ({ member }) => {
+  const hasInsta = member.socials?.insta && member.socials.insta !== '#';
+  const hasLinkedin = member.socials?.linkedin && member.socials.linkedin !== '#';
+  const hasEmail = member.socials?.email && member.socials.email !== '#';
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="glass-panel rounded-xl p-6 group hover:-translate-y-1 transition-transform duration-300 border border-outline-variant hover:border-primary/50 flex flex-col items-center text-center"
+    >
+      <div className="relative w-40 h-40 rounded-[2rem] overflow-hidden mb-6 border-2 border-primary/30 group-hover:border-primary transition-colors">
+        <img src={member.img} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      </div>
+      <h4 className="font-headline-md text-xl font-bold text-on-surface group-hover:text-primary transition-colors">{member.name}</h4>
+      <p className="font-code-display text-sm text-primary mt-1 mb-3">{member.role}</p>
+      {member.bio && (
+        <p className="font-body-sm text-on-surface-variant/80 text-xs mb-4 line-clamp-3 leading-relaxed">
+          {member.bio}
+        </p>
+      )}
+
+      <div className="flex gap-4 mt-auto pt-4 border-t border-outline-variant w-full justify-center">
+        {hasInsta ? (
+          <a href={member.socials.insta} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-pink-500 transition-colors" title="Instagram">
+            <i className="fa-brands fa-instagram text-xl"></i>
+          </a>
+        ) : (
+          <span className="text-on-surface-variant/30 cursor-default" title="Instagram not available">
+            <i className="fa-brands fa-instagram text-xl"></i>
+          </span>
+        )}
+
+        {hasLinkedin ? (
+          <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-blue-500 transition-colors" title="LinkedIn">
+            <i className="fa-brands fa-linkedin text-xl"></i>
+          </a>
+        ) : (
+          <span className="text-on-surface-variant/30 cursor-default" title="LinkedIn not available">
+            <i className="fa-brands fa-linkedin text-xl"></i>
+          </span>
+        )}
+
+        {hasEmail ? (
+          <a href={`mailto:${member.socials.email}`} className="text-on-surface-variant hover:text-primary transition-colors" title="Email">
+            <span className="material-symbols-outlined text-xl">mail</span>
+          </a>
+        ) : (
+          <span className="text-on-surface-variant/30 cursor-default" title="Email not available">
+            <span className="material-symbols-outlined text-xl">mail</span>
+          </span>
+        )}
+      </div>
+    </motion.div>
+  );
+};
 
 const Section = ({ title, members }) => {
   if (!members || members.length === 0) return null;
@@ -79,7 +125,7 @@ const Section = ({ title, members }) => {
 };
 
 const TeamPage = () => {
-  const [activeSession, setActiveSession] = useState('25-26');
+  const [activeSession, setActiveSession] = useState('26-27');
 
   const faculty = {
     name: "Mr. Biswajit Sarmah", role: "Faculty in Charge",
@@ -89,6 +135,158 @@ const TeamPage = () => {
   };
 
   const sessions = {
+    '26-27': {
+      leads: [
+        {
+          name: "Abhimanyu Saikia",
+          role: "Head",
+          img: abhimanyuImg,
+          bio: "Beep boop!",
+          socials: { insta: 'https://www.instagram.com/escursio675/', linkedin: 'https://www.linkedin.com/in/saikia-abhimanyu/', email: 'abhisaikia675@gmail.com' }
+        },
+        {
+          name: "Nayana Hazarika",
+          role: "Co-Head",
+          img: nayanaImg,
+          bio: "Dk",
+          socials: { insta: 'https://www.instagram.com/trauma_pie/', linkedin: '#', email: 'hazarikanayana2@gmail.com' }
+        },
+        {
+          name: "Anuvab Biswas",
+          role: "Lead Mentor",
+          img: anuvabImg,
+          bio: "Powered by butter chicken, and late-night debugging sessions. From orchestrating campus hack events to tackling tricky logic puzzles, I’m here to turn \"it worked on my machine\" into reality.",
+          socials: { insta: '#', linkedin: 'https://www.linkedin.com/in/anuvab-biswas/', email: 'anuvab190@gmail.com' }
+        }
+      ],
+      management: [
+        {
+          name: "Suhani Chutia",
+          role: "Management Head",
+          img: suhaniImg,
+          bio: "A Computer Science student who enjoys exploring technology, learning new things, and turning ideas into meaningful projects. Outside academics, I love reading novels, travelling, and exploring new places. I’m always excited to take on new challenges and make the most of every experience.",
+          socials: { insta: 'https://www.instagram.com/chocooky_08/', linkedin: 'https://www.linkedin.com/in/suhani-chutia-767b2a341/', email: 'suhanichutia00@gmail.com' }
+        },
+        {
+          name: "Brishav Bordoloi",
+          role: "Management Associate",
+          img: brishavImg,
+          bio: "I balance the fast pace of life with quiet moments on cycling trails and deep focus in my projects. A natural peace-lover, I bring a steady, low-stress energy to every team. Ultimately, the best things thrive in calm minds.",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        },
+        {
+          name: "Kundalkalyan Boruah",
+          role: "Event Management",
+          img: kundalkalyanImg,
+          bio: "Building cool stuff, breaking things,",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        },
+        {
+          name: "Souradeep Deb",
+          role: "Management Associate",
+          img: souradeepImg,
+          bio: "A 2nd-year CSE sophomore exploring every tech domain before picking a favourite. I code, experiment, break things, fix them, and repeat—still figuring out where I fit best.",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        },
+        {
+          name: "Priya Swargiary",
+          role: "Management Associate",
+          img: priyaImg,
+          bio: "Mechanical Engineering student and Management Associate at Dcode Club. Curious by nature, driven to learn, collaborate, and turn ideas into action. Always open to new experiences and challenges.",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        },
+        {
+          name: "Anwesha Dey",
+          role: "Management Associate",
+          img: anweshaImg,
+          bio: "A CSE student who enjoys exploring technology, meeting new people, and taking on new challenges. Curious, creative, and always eager to learn, I love working with people and turning ideas into meaningful experiences. Excited to contribute, collaborate, and grow as a part of the DCode community.",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        }
+      ],
+      pr: [
+        {
+          name: "Doyan Biswas",
+          role: "Public Relations Head",
+          img: doyanImg,
+          bio: "Backend brain, PR duties, and a questionable sleep schedule. Building things, promoting things, meeting deadlines, and occasionally breaking things. Somewhere between debugging code and debugging event chaos, I survive",
+          socials: { insta: 'https://www.instagram.com/_doyan__7/', linkedin: 'https://www.linkedin.com/in/doyan-biswas-b29b15313/', email: 'biswasdoyan@gmail.com' }
+        }
+      ],
+      design: [
+        {
+          name: "Nibir Kalita",
+          role: "Design Co-Lead",
+          img: nibirImg,
+          bio: "A storyteller who loves blending creativity with tech . I do designs , arts , music , dramas and many more . Love exploring new ideas , new concepts and I try to keep pushing myself to higher limits ! ",
+          socials: { insta: 'https://www.instagram.com/nibirkalita_7/', linkedin: 'https://www.linkedin.com/in/nibirkalita07/', email: 'raag2263@gmail.com' }
+        },
+        {
+          name: "Shreya Bhuyan",
+          role: "Design Associate",
+          img: shreyaImg,
+          bio: "Shreya Bhuyan is a creator bridging code and canvas. As a member of the design team, she combines sharp programming expertise with a strong eye for aesthetics to craft engaging digital experiences.",
+          socials: { insta: 'https://www.instagram.com/shreya.bhuyan/', linkedin: 'https://www.linkedin.com/in/shreya-bhuyan-756522330/', email: 'shreyabhuyan1@gmail.com' }
+        },
+        {
+          name: "Bornali Tasha",
+          role: "Design Associate",
+          img: bornaliImg,
+          bio: "I keep signing up for things and figuring out how to do them later 😭 Currently surviving civil engineering, collecting random experiences, and somehow ending up in the middle of everything.",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        },
+        {
+          name: "Gyanam Duwara",
+          role: "Design Associate",
+          img: gyanamImg,
+          bio: "Hi , myself Gyanam.",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        }
+      ],
+      technical: [
+        {
+          name: "Priyangshu Das",
+          role: "Technical Coordinator",
+          img: priyangshuImg,
+          bio: "A CSE student who likes coding, building things, and occasionally overcomplicating simple problems. Usually found somewhere between DSA, web development, and random tech experiments. As Technical Coordinator of DCODE, currently trying to make things happen without breaking the code—or the team.",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        },
+        {
+          name: "Bibek Sarma",
+          role: "Technical Associate",
+          img: bibekImg,
+          bio: "Code> Create> Break> Debug> Repeat. Building things, learning things, and occasionally wondering why the code worked yesterday. Code, coffee, and a never-ending list of things that I wanna build. Just here to learn, experiment, and obviously to make cool stuff.",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        },
+        {
+          name: "Shakhyar Gogoi",
+          role: "Technical Associate",
+          img: shakhyarImg,
+          bio: "Self-taught programmer since 2016, AI researcher, and creator of the novel AI architectures, the COMET-SG series. I focus on building efficient machine learning systems and lightweight backend pipelines for tiny hardwares. When I’m away from the keyboard, you’ll usually find me getting completely immersed in story-driven video games.",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        },
+        {
+          name: "Rittam",
+          role: "Technical Associate",
+          img: rittamImg,
+          bio: "I build websites that become obscure. Entropy OP",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        },
+        {
+          name: "Dibyani Paul",
+          role: "Technical Associate",
+          img: dibyaniImg,
+          bio: "Fueled by good music, hands-on projects, and a brand new curiosity for tech.",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        },
+        {
+          name: "Nidarshana Kafley",
+          role: "Technical Associate",
+          img: nidarshanaImg,
+          bio: "can't wait for retirement ",
+          socials: { insta: '#', linkedin: '#', email: '#' }
+        }
+      ]
+    },
     '25-26': {
       leads: [
         {
@@ -245,16 +443,16 @@ const TeamPage = () => {
           </div>
           <div className="h-6 w-px bg-outline-variant mx-2"></div>
           <button
-            onClick={() => setActiveSession('25-26')}
-            className={`font-code-display text-sm px-4 py-2 rounded-md transition-all ${activeSession === '25-26' ? 'bg-primary text-on-primary font-bold shadow-[0_0_15px_rgba(254,149,32,0.3)]' : 'text-on-surface-variant hover:text-on-surface hover:bg-white/5'}`}
-          >
-            Session '25-'26
-          </button>
-          <button
             onClick={() => setActiveSession('26-27')}
             className={`font-code-display text-sm px-4 py-2 rounded-md transition-all ${activeSession === '26-27' ? 'bg-primary text-on-primary font-bold shadow-[0_0_15px_rgba(254,149,32,0.3)]' : 'text-on-surface-variant hover:text-on-surface hover:bg-white/5'}`}
           >
             Session '26-'27
+          </button>
+          <button
+            onClick={() => setActiveSession('25-26')}
+            className={`font-code-display text-sm px-4 py-2 rounded-md transition-all ${activeSession === '25-26' ? 'bg-primary text-on-primary font-bold shadow-[0_0_15px_rgba(254,149,32,0.3)]' : 'text-on-surface-variant hover:text-on-surface hover:bg-white/5'}`}
+          >
+            Session '25-'26
           </button>
         </div>
 
@@ -264,13 +462,7 @@ const TeamPage = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3 }}
         >
-          {activeSession === '26-27' ? (
-            <div className="py-24 text-center">
-              <span className="material-symbols-outlined text-6xl text-primary-container/50 mb-4">hourglass_empty</span>
-              <h3 className="font-headline-md text-3xl font-bold text-on-surface mb-2">To Be Released Soon</h3>
-              <p className="font-code-display text-on-surface-variant">We are currently forming the next generation of architects.</p>
-            </div>
-          ) : (
+          {currentData ? (
             <>
               <Section title="Our Leads" members={currentData.leads} />
               <Section title="Public Relations Team" members={currentData.pr} />
@@ -278,6 +470,12 @@ const TeamPage = () => {
               <Section title="Management Team" members={currentData.management} />
               <Section title="Technical Team" members={currentData.technical} />
             </>
+          ) : (
+            <div className="py-24 text-center">
+              <span className="material-symbols-outlined text-6xl text-primary-container/50 mb-4">hourglass_empty</span>
+              <h3 className="font-headline-md text-3xl font-bold text-on-surface mb-2">To Be Released Soon</h3>
+              <p className="font-code-display text-on-surface-variant">We are currently forming the next generation of architects.</p>
+            </div>
           )}
         </motion.div>
 
