@@ -152,6 +152,13 @@ const TeamPage = () => {
           socials: { insta: 'https://www.instagram.com/trauma_pie/', linkedin: '#', email: 'hazarikanayana2@gmail.com' }
         },
         {
+          name: "Mriganka Mahanta",
+          role: "Co-Head",
+          img: mrigankaImg,
+          bio: "",
+          socials: { insta: 'https://www.instagram.com/mahanta._.mrigaa/', linkedin: 'https://www.linkedin.com/in/mriganka-mahanta-661981397/', email: 'mrigank195@gmail.com' }
+        },
+        {
           name: "Anuvab Biswas",
           role: "Lead Mentor",
           img: anuvabImg,
@@ -243,6 +250,13 @@ const TeamPage = () => {
         }
       ],
       technical: [
+        {
+          name: "Priyam Nath",
+          role: "Tech Lead",
+          img: priyamImg,
+          bio: "",
+          socials: { insta: 'https://www.instagram.com/priyam_nath5/', linkedin: 'https://www.linkedin.com/in/priyam-nath-4a8487329/', email: 'priyamnath5@gmail.com' }
+        },
         {
           name: "Priyangshu Das",
           role: "Technical Coordinator",

@@ -1,10 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import tasdeequeImg from '../assets/team/tasdeeque.jpg';
-import sampritiImg from '../assets/team/sampriti.jpeg';
-import nitulImg from '../assets/team/nitul.jpeg';
-import sameerImg from '../assets/team/sameer.jpeg';
+import abhimanyuImg from '../assets/team/abhimanyu.jpg';
+import nayanaImg from '../assets/team/nayana.png';
+import anuvabImg from '../assets/team/anuvab.jpg';
+import mrigankaImg from '../assets/team/mriganka.jpg';
+import doyanImg from '../assets/team/doyan.jpg';
+import nibirImg from '../assets/team/nibir.jpg';
+import suhaniImg from '../assets/team/suhani.jpg';
+import priyamImg from '../assets/team/priyam.webp';
 
 const TeamCard = ({ member }) => {
   const hasInsta = member.socials?.insta && member.socials.insta !== '#';
@@ -62,20 +66,36 @@ const TeamCard = ({ member }) => {
 const Team = () => {
   const coreTeam = [
     {
-      name: "Tasdeeque Ruhani", role: "Head",
-      img: tasdeequeImg, socials: { insta: 'https://www.instagram.com/taz.r.exe/', linkedin: 'https://www.linkedin.com/in/tasdeeque-ruhani/', email: 'tasdeequeruhani2002@gmail.com' }
+      name: "Abhimanyu Saikia", role: "Head",
+      img: abhimanyuImg, socials: { insta: 'https://www.instagram.com/escursio675/', linkedin: 'https://www.linkedin.com/in/saikia-abhimanyu/', email: 'abhisaikia675@gmail.com' }
     },
     {
-      name: "Sampriti Kalita", role: "Co-Head",
-      img: sampritiImg, socials: { insta: 'https://www.instagram.com/sampriti_kalita/', linkedin: 'https://www.linkedin.com/in/sampriti-kalita-a49198250/', email: 'sampritik100@gmail.com' }
+      name: "Nayana Hazarika", role: "Co-Head",
+      img: nayanaImg, socials: { insta: 'https://www.instagram.com/trauma_pie/', linkedin: '#', email: 'hazarikanayana2@gmail.com' }
     },
     {
-      name: "Nitul Das", role: "Co-Head",
-      img: nitulImg, socials: { insta: 'https://www.instagram.com/ni_t_ul8/', linkedin: 'https://www.linkedin.com/in/nituldas/', email: 'ndas6732@gmail.com' }
+      name: "Anuvab Biswas", role: "Lead Mentor",
+      img: anuvabImg, socials: { insta: '#', linkedin: 'https://www.linkedin.com/in/anuvab-biswas/', email: 'anuvab190@gmail.com' }
     },
     {
-      name: "Sameer Kashyap", role: "Lead-Mentor",
-      img: sameerImg, socials: { insta: 'https://www.instagram.com/scaptera_/', linkedin: 'https://www.linkedin.com/in/sameer-kashyap/', email: 'mistakenpirate38@gmail.com' }
+      name: "Mriganka Mahanta", role: "Co-Head",
+      img: mrigankaImg, socials: { insta: 'https://www.instagram.com/mahanta._.mrigaa/', linkedin: 'https://www.linkedin.com/in/mriganka-mahanta-661981397/', email: 'mrigank195@gmail.com' }
+    },
+    {
+      name: "Doyan Biswas", role: "Public Relations Lead",
+      img: doyanImg, socials: { insta: 'https://www.instagram.com/_doyan__7/', linkedin: 'https://www.linkedin.com/in/doyan-biswas-b29b15313/', email: 'biswasdoyan@gmail.com' }
+    },
+    {
+      name: "Nibir Kalita", role: "Design Co-Lead",
+      img: nibirImg, socials: { insta: 'https://www.instagram.com/nibirkalita_7/', linkedin: 'https://www.linkedin.com/in/nibirkalita07/', email: 'raag2263@gmail.com' }
+    },
+    {
+      name: "Suhani Chutia", role: "Management Lead",
+      img: suhaniImg, socials: { insta: 'https://www.instagram.com/chocooky_08/', linkedin: 'https://www.linkedin.com/in/suhani-chutia-767b2a341/', email: 'suhanichutia00@gmail.com' }
+    },
+    {
+      name: "Priyam Nath", role: "Tech Lead",
+      img: priyamImg, socials: { insta: 'https://www.instagram.com/priyam_nath5/', linkedin: 'https://www.linkedin.com/in/priyam-nath-4a8487329/', email: 'priyamnath5@gmail.com' }
     }
   ];
 
