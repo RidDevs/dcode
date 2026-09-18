@@ -221,6 +221,13 @@ const TeamPage = () => {
       ],
       design: [
         {
+          name: "Shreya Bhuyan",
+          role: "Design Lead",
+          img: shreyaImg,
+          bio: "Shreya Bhuyan is a creator bridging code and canvas. As a member of the design team, she combines sharp programming expertise with a strong eye for aesthetics to craft engaging digital experiences.",
+          socials: { insta: 'https://www.instagram.com/shreya.bhuyan/', linkedin: 'https://www.linkedin.com/in/shreya-bhuyan-756522330/', email: 'shreyabhuyan1@gmail.com' }
+        },
+        {
           name: "Nibir Kalita",
           role: "Design Co-Lead",
           img: nibirImg,
@@ -228,12 +235,13 @@ const TeamPage = () => {
           socials: { insta: 'https://www.instagram.com/nibirkalita_7/', linkedin: 'https://www.linkedin.com/in/nibirkalita07/', email: 'raag2263@gmail.com' }
         },
         {
-          name: "Shreya Bhuyan",
+          name: "Abhinav Neog",
           role: "Design Co-Lead",
-          img: shreyaImg,
-          bio: "Shreya Bhuyan is a creator bridging code and canvas. As a member of the design team, she combines sharp programming expertise with a strong eye for aesthetics to craft engaging digital experiences.",
-          socials: { insta: 'https://www.instagram.com/shreya.bhuyan/', linkedin: 'https://www.linkedin.com/in/shreya-bhuyan-756522330/', email: 'shreyabhuyan1@gmail.com' }
+          img: abhinavImg,
+          bio: "",
+          socials: { insta: 'https://www.instagram.com/abh1n8v_?stkn=bmV2dDVpNWtmOW0x', linkedin: 'https://www.linkedin.com/in/abhinav-neog-abh1/', email: 'abhinavneog12@gmail.com' }
         },
+
         {
           name: "Bornali Tasha",
           role: "Design Associate",
