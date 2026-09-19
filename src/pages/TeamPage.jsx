@@ -59,19 +59,28 @@ const TeamCard = ({ member }) => {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="glass-panel rounded-xl p-6 group hover:-translate-y-1 transition-transform duration-300 border border-outline-variant hover:border-primary/50 flex flex-col items-center text-center"
+      tabIndex={0}
+      className="glass-panel rounded-xl p-6 group hover:-translate-y-1 focus:-translate-y-1 transition-transform duration-300 border border-outline-variant hover:border-primary/50 focus:border-primary/50 flex flex-col items-center text-center outline-none"
     >
-      <div className="relative w-40 h-40 rounded-[2rem] overflow-hidden mb-6 border-2 border-primary/30 group-hover:border-primary transition-colors">
+      {/* Photo — always visible */}
+      <div className="relative w-40 h-40 rounded-[2rem] overflow-hidden mb-6 border-2 border-primary/30 group-hover:border-primary transition-colors shrink-0">
         <img src={member.img} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
       </div>
-      <h4 className="font-headline-md text-xl font-bold text-on-surface group-hover:text-primary transition-colors">{member.name}</h4>
-      <p className="font-code-display text-sm text-primary mt-1 mb-3">{member.role}</p>
+
+      {/* Name & role — always visible */}
+      <h4 className="font-headline-md text-xl font-bold text-on-surface group-hover:text-primary transition-colors shrink-0">{member.name}</h4>
+      <p className="font-code-display text-sm text-primary mt-1 mb-2 shrink-0">{member.role}</p>
+
+      {/* Bio — 2 lines by default, expands on hover/focus */}
       {member.bio && (
-        <p className="font-body-sm text-on-surface-variant/80 text-xs mb-4 line-clamp-3 leading-relaxed">
-          {member.bio}
-        </p>
+        <div className="w-full overflow-hidden max-h-[2.5rem] group-hover:max-h-48 group-focus:max-h-48 transition-[max-height] duration-300 ease-in-out mt-2">
+          <p className="font-body-sm text-on-surface text-xs leading-relaxed overflow-y-auto max-h-48 text-left [scrollbar-width:thin]">
+            {member.bio}
+          </p>
+        </div>
       )}
 
+      {/* Socials — always at bottom */}
       <div className="flex gap-4 mt-auto pt-4 border-t border-outline-variant w-full justify-center">
         {hasInsta ? (
           <a href={member.socials.insta} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-pink-500 transition-colors" title="Instagram">
